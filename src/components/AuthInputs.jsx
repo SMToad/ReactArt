@@ -1,9 +1,19 @@
 import { useState } from 'react';
+import {styled} from 'styled-components';
+import StyledButton from './StyledButton';
+import StyledInput from './StyledInput';
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  const StyledDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  `;
 
   function handleInputChange(identifier, value) {
     if (identifier === 'email') {
@@ -22,31 +32,29 @@ export default function AuthInputs() {
 
   return (
     <div id="auth-inputs">
-      <div className="controls">
+      <StyledDiv>
         <p>
-          <label>Email</label>
-          <input
+          <StyledInput
+            label="Email"
+            invalid={emailNotValid}
             type="email"
-            className={emailNotValid ? 'invalid' : undefined}
-            onChange={(event) => handleInputChange('email', event.target.value)}
-          />
+            onChange={(event) => handleInputChange('email', event.target.value)}/>
         </p>
         <p>
-          <label>Password</label>
-          <input
+          <StyledInput
+            label="Password"
+            invalid={passwordNotValid}
             type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
             onChange={(event) =>
               handleInputChange('password', event.target.value)
-            }
-          />
+            }/>
         </p>
-      </div>
+      </StyledDiv>
       <div className="actions">
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <button className='button' onClick={handleLogin}>Sign In</button>
+        <StyledButton className='button' onClick={handleLogin}>Sign In</StyledButton>
       </div>
     </div>
   );
