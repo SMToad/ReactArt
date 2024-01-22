@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {styled} from 'styled-components';
-import StyledButton from './StyledButton';
+//import StyledButton from './StyledButton';
+import Button from './Button';
 import StyledInput from './StyledInput';
 
 export default function AuthInputs() {
@@ -54,7 +55,7 @@ export default function AuthInputs() {
         <button type="button" className="text-button">
           Create a new account
         </button>
-        <StyledButton className='button' onClick={handleLogin}>Sign In</StyledButton>
+        <Button onClick={handleLogin}>Sign In</Button>
       </div>
     </div>
   );
